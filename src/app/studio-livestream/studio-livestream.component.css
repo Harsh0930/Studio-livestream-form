@@ -1,0 +1,6 @@
+.email_chip{
+    font-size: 12px;
+    background-color: rgb(208, 208, 208);
+    width:min-content;
+    border-radius: 10px;
+}

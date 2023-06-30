@@ -1,0 +1,22 @@
+{
+  "events": [
+    {
+      "eventTitle": "Mr and Mrs Kumaon Glam Hunt",
+      "fromDate": "2023-07-19T18:30:00.000Z",
+      "fromTime": "00:15",
+      "toTime": "01:45",
+      "description": "Hope your are all good !! Enjoy your grooming session with Swastik Production.",
+      "guests": "saabharsh78@gmail.com , harsh@gmail.com",
+      "id": 1
+    },
+    {
+      "eventTitle": "Mr and Mrs Kumaon Glam Hunt",
+      "eventDate": "2023-06-28T18:30:00.000Z",
+      "fromTime": "03:30",
+      "toTime": "05:00",
+      "description": "Hope your are all good !! Enjoy your grooming session with Swastik Production.",
+      "guests": "harsh123@gmail.com",
+      "id": 2
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+<section class="main_section container-fluid  my-5">
+    <h3 class="text-dark fs-5 fw-semibold">Fill in the Event Details</h3>
+    <form  class="event_form border border-1 border-secondary rounded-3 w-50 p-4" (ngSubmit)="onSubmit()" [formGroup]="liveStreamForm"  >
+        <!-- Event title  -->
+        <mat-form-field appearance="legacy" class="mb-2 w-100">
+            <input matInput type="text" placeholder="Add Title" formControlName="eventTitle" name="eventTitle">
+            <mat-error *ngIf="eventTitle?.errors?.['required']">Event Title is required</mat-error>
+            <mat-error *ngIf="eventTitle?.errors?.['maxlength']">Event title should not exceed 100 characters</mat-error>
+        </mat-form-field>
+        <!-- Event Date  -->
+        <mat-form-field appearance="legacy" class="mb-2">
+            <input matInput [min]="minDate"  [matDatepicker]="picker" formControlName="eventDate" name="eventDate">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="eventDate?.errors?.['required']">Event schedule date is required</mat-error>
+        </mat-form-field>
+        <!-- From Time  -->
+        <mat-form-field appearance="legacy" class="mb-2 ms-4">
+            <input matInput type="text" placeholder="From Time" formControlName="fromTime" [matAutocomplete]="auto"  name="fromTime">
+            <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let times of timeValues" [value]="times">
+                  {{times}}
+                </mat-option>
+              </mat-autocomplete>
+              <mat-error *ngIf="fromTime?.errors?.['required']">Event schedule from time is required</mat-error>
+        </mat-form-field>
+        <!-- To Time  -->
+        <mat-form-field appearance="legacy" class="mb-2 ms-4">
+            <input matInput type="text" placeholder="To Time" formControlName="toTime" [matAutocomplete]="autoToTime"  name="toTime">
+            <mat-autocomplete #autoToTime="matAutocomplete">
+                <mat-option *ngFor="let totime of timeValues" [value]="totime">
+                  {{totime}}
+                </mat-option>
+              </mat-autocomplete>
+              <mat-error *ngIf="fromTime?.errors?.['required']">Event schedule to time is required</mat-error>
+        </mat-form-field>
+        <!-- Description Textarea  -->
+        <mat-form-field appearance="legacy" class="mb-2">
+            <textarea matInput name="description"  cols="30" rows="10" placeholder="Description" formControlName="description"></textarea>
+        </mat-form-field>
+        <!-- Guests Chip list  -->
+        <mat-form-field appearance="legacy" class="mb-2 m-4 w-50">
+            <textarea matInput type="text" placeholder="Guests"  formControlName="guests" name="guests"></textarea>
+                <mat-chip-list class="p-1 email_chip my-2 d-flex p-2 text-dark" *ngFor="let list of guestList" [value]="list">{{list}}</mat-chip-list>
+            <mat-error *ngIf="guests?.errors?.['required']">Guest email id is required</mat-error>
+            <mat-error *ngIf="liveStreamForm.controls.guests?.errors?.['invalidGuestEmails']">One of the guests in the list has an invalid email id</mat-error>
+        </mat-form-field><br>
+        <!-- Button  -->
+        <button mat-raised-button color="primary" type="submit" [disabled]="liveStreamForm.invalid">Save</button>
+    </form>
+</section>
